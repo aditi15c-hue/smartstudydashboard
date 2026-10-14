@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Study Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Smart Study Dashboard</h1>
+    <p>Track your study sessions and watch your habits grow.</p>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="card"><span id="total-hours">0</span><small>Total hours</small></div>
+      <div class="card"><span id="total-sessions">0</span><small>Sessions</small></div>
+    </section>
+
+    <section class="panel">
+      <h2>Add a session</h2>
+      <form id="session-form">
+        <input id="subject" placeholder="Subject (e.g. Maths)" required maxlength="50" />
+        <input id="minutes" type="number" placeholder="Minutes" min="1" max="1440" required />
+        <input id="study-date" type="date" required />
+        <input id="notes" placeholder="Notes (optional)" maxlength="300" />
+        <button type="submit">Add</button>
+      </form>
+      <p id="error" class="error"></p>
+    </section>
+
+    <section class="charts">
+      <div class="panel"><h2>Minutes per subject</h2><canvas id="subject-chart"></canvas></div>
+      <div class="panel"><h2>Last 14 study days</h2><canvas id="day-chart"></canvas></div>
+    </section>
+
+    <section class="panel">
+      <h2>All sessions</h2>
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Subject</th><th>Minutes</th><th>Notes</th><th></th></tr>
+        </thead>
+        <tbody id="session-rows"></tbody>
+      </table>
+      <p id="empty" class="muted">No sessions yet. Add your first one above!</p>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
